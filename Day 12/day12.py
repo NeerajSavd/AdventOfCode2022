@@ -1,5 +1,3 @@
-import time
-
 def day12(part1):
     file = open("d:\Onedrive\Coding\AdventOfCode2022\Day 12\day12.txt", "r")
     map = []
