@@ -28,7 +28,6 @@ def day11(part1):
     for j in range(len(operations)):
         mod *= operations[j][2]
     for _ in range(n):
-        print(_)
         for m in range(len(items)):
             while (len(items[m]) != 0):
                 worry = items[m].pop(0)
