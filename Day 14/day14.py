@@ -1,4 +1,4 @@
-def day13(part1):
+def day14(part1):
     file = open("d:\Onedrive\Coding\AdventOfCode2022\Day 14\day14.txt", "r")
     cave = []
     for line in file:
@@ -45,4 +45,4 @@ def day13(part1):
                 break
     print(numSand)
 
-day13(False)
+day14(False)
