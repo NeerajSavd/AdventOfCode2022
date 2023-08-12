@@ -7,22 +7,19 @@ def findPressure(valves, prev, current, openV, minutes):
     if minutes == 0:
         # print("Returning 0 minutes")
         return 0
-    releasing = 0
-    for v in openV:
-        releasing += valves[v][0]
     if len(openV) == len(valves):
-        return minutes*releasing
+        return 0
     if (current, minutes) in maxPressure:
-        return releasing + maxPressure[(current, minutes)]
+        return maxPressure[(current, minutes)]
     
     pressure = [0]
     for valve in valves[current][1:]:
-        pressure.append(findPressure(valves, current, valve, openV, minutes-1))
+        pressure.append(findPressure(valves, current, valve, [], minutes-1))
     if current not in openV:
-        pressure.append(findPressure(valves, current, current, openV+[current], minutes-1))
+        pressure.append(valves[current][0]*(minutes-1) + findPressure(valves, current, current, [current], minutes-1))
     # print("Returning", prev, current, openV, pressure, minutes)
     maxPressure[(current, minutes)] = max(pressure)
-    return releasing + max(pressure)
+    return max(pressure)
 
 def part1():
     file = open("d:\Onedrive\Coding\AdventOfCode2022\Day 16\day16.txt", "r")
